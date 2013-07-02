@@ -1,4 +1,5 @@
-Instagram feed for beginners
+Instafeed - Instagram for dumbies
+
 ========================
 
 Getting your head round a new API, can be a daunting task for anyone. Epecially if you only have a basic understanding of code. That's why I've submitted an Instagram feed, that hopefully everyone can use with ease.
