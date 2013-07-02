@@ -1,10 +1,26 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>Instafeed - Instagram for dumbies</title>
+<style>
+	.h1 { font-family:Arial, Helvetica, sans-serif; font-size:30px; margin:200px 0 50px 0; padding:0; }
+	.instagram { width:100%; margin:0 0 200px 0; padding:0; }
+	.instagram li { float:left; margin:0 10px 10px 0; }
+	.instagram li a { border:0; text-decoration:none; }
+	.instagram li a img { width:100px; height:100px; }
+</style>
+</head>
+
+<body>
+<h1>Instafeed - Instagram for dumbies</h1>
 <?php
 	/**
-	* Instagram feed for beginners
+	* Instafeed - Instagram for dumbies
 	*
 	* @version	1.0
 	* @author	Andrew Biggart
-	* @link	https://github.com/andrewbiggart/php-instagram
+	* @link	https://github.com/andrewbiggart/instafeed
 	*
 	* Notes:
 	* 
@@ -12,7 +28,7 @@
 	*
 	* Once you have registered, you'll need to change the username parameter to your selected username. You can also change the html structure and class, should you want to style it to fit your sites design.
 	*
-	* Next upload all files to your main directory, and then just include the file whereever you want the feed to show. (<?php include('instagram.php') ?>)
+	* Next upload all files to your main directory, and then just include the file whereever you want the feed to show. (<?php include('../php-instagram/instagram.php') ?>)
 	*
 	* You can also use CSS or Javascript to control the size of the images.
 	* 
@@ -30,7 +46,10 @@
 	*
 	**/
 	
-	function instagram($u){
+	//error_reporting(0);
+	//ini_set('error_reporting', E_ALL);
+	
+	function instafeed($u){
 		
 		// Set timezone. (Modify to match your timezone) If you need help with this, you can find it here. (http://php.net/manual/en/timezones.php)
 		date_default_timezone_set('Europe/London');
@@ -64,7 +83,6 @@
 		
 			$get_pics = file_get_contents("http://followgram.me/".$u."/rss");
 			
-			// Open html wrapper
 			echo $open;
 				
 			// Error check: Make sure there is at least one item.
@@ -107,6 +125,8 @@
 					}
  
 				}
+				
+				echo $close;
  
 				// Generate a new cache file.
 				$file = fopen($cache, 'w');
@@ -116,14 +136,13 @@
 				fclose($file); 
 				ob_end_flush();
 					
-			}
-			
-			// Close html wrapper
-			echo $close;
+			}		
 		
 		}
 		
 	}
 	
-	instagram("andrew_biggart");
+	instafeed("andrew_biggart");
 ?>
+</body>
+</html>
