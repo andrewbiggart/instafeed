@@ -64,6 +64,7 @@
 		
 			$get_pics = file_get_contents("http://followgram.me/".$u."/rss");
 			
+			// Open html wrapper
 			echo $open;
 				
 			// Error check: Make sure there is at least one item.
@@ -106,8 +107,6 @@
 					}
  
 				}
-				
-				echo $close;
  
 				// Generate a new cache file.
 				$file = fopen($cache, 'w');
@@ -117,7 +116,10 @@
 				fclose($file); 
 				ob_end_flush();
 					
-			}		
+			}
+			
+			// Close html wrapper
+			echo $close;
 		
 		}
 		
