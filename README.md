@@ -1,56 +1,41 @@
-latest-tweets-php-o-auth
+Instagram feed for beginners
 ========================
 
-Twitters API v1.0 has now been retired. Here's a way you can pull your tweets from Twitter using PHP and OAuth.
+Getting your head around and API, can be a daunting task. Epecially if you have a basic understanding of code. That is why I have created an Instagram feed, that hopefully everyone can use with ease.
 
 Overview
 ========================
 
-- Tweets are cached to avoid exceeding Twitter’s limit of 150 requests for a user’s RSS and json feed per hour.
-- A fallback is provided in case the twitter feed fails to load. this can be edited to suit your needs.
-- A configuration parameter allows you to specify how many tweets are displayed
-- Dates can optionally be displayed in “Twitter style”, e.g. "12 minutes ago"
-- You can edit the HTML that wraps your tweets, tweet status and meta information
+- Custom html styling (Not required)
+- Limit the number of entries returned (Maximum 20)
+- Caching
 
 Parameters
 ========================
 
-- Twitter handle.
+- Caching time
 - Cache file location.
-- Tweets to display.
-- Ignore replies.
-- Include retweets.
-- Twitter style dates. ("16 hours ago")
-- Custom html.
+- Image limit
 
 Usage
 ========================
 
-Firstly you will need to register your app / website with Twitters developer site. (https://dev.twitter.com) you will then get your consumer key, consumer secret, access token and your access token secret. You then need to add them to the script.
+This feed is reliant on http://followgram.me/, which takes care of that nasty API babble. So the first thing you'll need to do is register with their site and setup your username.
 
-You should edit the Twitter ID in the function call above before using the function (it appears at the very bottom of the code snippet).
+Once you have registered, you'll need to change the username parameter to your selected username. You can also change the html structure and class, should you want to style it to fit your sites design.
 
-You probably also want to edit the location where the twitter feed is cached – by default it is written to the root level of your domain. To change the location, modify the $cache_file variable, or pass the new location as a function parameter.
+Next upload all files to your main directory, and then just include the file whereever you want the feed to show. (<?php include('instagram.php') ?>)
 
-Feel free to edit any of the other parameters to suit your needs.
+You can also use CSS or Javascript to control the size of the images.
 
-Notes
-========================
-
-Twitter feeds may contain UTF-8 characters. I have found that running PHP’s utf_decode method on tweets didn’t have the expected result, so my recommendation is to instead set the charset of your HTML page to UTF-8. Really we should all be doing this anyway. (http://www.w3.org/International/O-charset)
 
 Credits
 ========================
 
-I was orginally using Pixel Acres script (http://f6design.com/journal/2010/10/07/display-recent-twitter-tweets-using-php/). But since Twitter has retired API v1.0, the script no longer worked because it didn't include authentication. I have now modified the script to include authentication using API v1.1.
+Initial idea came when I stumbled across this article by Snipplr.
+http://snipplr.com/view/58083/
 
-The hashtag/username parsing in my example is from Get Twitter Tweets (http://snipplr.com/view/16221/get-twitter-tweets/) by gripnrip (http://snipplr.com/users/gripnrip/).
-
-My RSS parsing is based on replies in the forum discussion "embedding twitter tweets" on the Boagworld website. (http://boagworld.com/forum/comments.php?DiscussionID=4639)
-
-The file caching is based on the AddedBytes article "Caching output in PHP". (http://www.addedbytes.com/articles/for-beginners/output-caching-for-beginners/)
-
-Authentication with Twitter uses twitteroauth. (https://github.com/abraham/twitteroauth)
+I cleaned up the code and added caching fucntionality.
 
 License
 ========================
