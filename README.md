@@ -1,7 +1,7 @@
 Instagram feed for beginners
 ========================
 
-Getting your head around and API, can be a daunting task. Epecially if you have a basic understanding of code. That is why I have created an Instagram feed, that hopefully everyone can use with ease.
+Getting your head round a new API, can be a daunting task for anyone. Epecially if you only have a basic understanding of code. That's why I've submitted an Instagram feed, that hopefully everyone can use with ease.
 
 Overview
 ========================
