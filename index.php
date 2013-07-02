@@ -1,31 +1,29 @@
 <?php
 	/**
-	* Instagram feed which uses http://followgram.me/
+	* Instagram feed for beginners
 	*
 	* @version	1.0
 	* @author	Andrew Biggart
-	* @link	https://github.com/andrewbiggart/instagram-feed
+	* @link	https://github.com/andrewbiggart/php-instagram
 	*
 	* Notes:
 	* 
-	* 
-	* 
-	* 
-	* 
+	* This feed is reliant on http://followgram.me/, which takes care of that nasty API babble. So the first thing you'll need to do is register with their site and setup your username.
 	*
-	* 
-	* 
+	* Once you have registered, you'll need to change the username parameter to your selected username. You can also change the html structure and class, should you want to style it to fit your sites design.
 	*
+	* Next upload all files to your main directory, and then just include the file whereever you want the feed to show. (<?php include('instagram.php') ?>)
+	*
+	* You can also use CSS or Javascript to control the size of the images.
 	* 
 	*
 	* Credits:
 	***************************************************************************************
 	* 
-	* http://www.barattalo.it/2011/08/18/how-to-use-instagr-am-photos/
+	* Initial idea came when I stumbled across this article by Snipplr.
+	* http://snipplr.com/view/58083/
 	*
-	* 
-	* 
-	* 
+	* I cleaned up the code and added caching fucntionality.
 	* 
 	***************************************************************************************
 	*
@@ -65,6 +63,8 @@
 		} else {
 		
 			$get_pics = file_get_contents("http://followgram.me/".$u."/rss");
+			
+			echo $open;
 				
 			// Error check: Make sure there is at least one item.
 			if (count($get_pics)) {
@@ -96,7 +96,7 @@
 					preg_match_all('#<img src="([^>]*)">#Us', $item, $temp);
 					$thumb = $temp[1][0];
 								
-					echo '<a href="' . $link . '" title="' . $title .'" target="_blank"><img src="' . $thumb .'" alt="' . $title . ' - ' . $date . '"/></a>';
+					echo '<li><a href="' . $link . '" title="' . $title .'" target="_blank"><img src="' . $thumb .'" alt="' . $title . ' - ' . $date . '"/></a></li>';
 								
 					$stop ++;
 					
@@ -106,6 +106,8 @@
 					}
  
 				}
+				
+				echo $close;
  
 				// Generate a new cache file.
 				$file = fopen($cache, 'w');
